@@ -1,0 +1,114 @@
+Short:        Live system monitor for Kickstart 1.3 and up
+Author:       Paul Seibert (Desert Palms Software)
+Uploader:     Paul Seibert <your@email.here>
+Type:         util/moni
+Version:      1.0
+Architecture: m68k-amigaos >= 1.3
+Distribution: Aminet
+Requires:     Nothing extra. Any Amiga, 512K is plenty.
+
+SysMon 1.0 - (c) 2026 Desert Palms Software. Written by Paul Seibert.
+Freeware.
+
+SysMon is a small Workbench tool that shows you what your Amiga is doing,
+live, in one window. It is written in C for AmigaOS 1.3 (V33) and runs
+unchanged on 2.x and 3.x. It only uses the 1.3 operating system, so it
+works on a stock A500 or A2000 as well as on bigger machines.
+
+What it shows
+-------------
+
+ * Chip RAM and Fast RAM gauges: free and total memory, with the largest
+   free block shown in the text report.
+ * A rolling graph of memory use (chip in colour, fast as a dotted line).
+ * Kickstart version, CPU and FPU, chipset (OCS / ECS / AGA) and PAL or
+   NTSC, plus the number of running tasks.
+ * Five views of the system lists, switched with the tabs or the View menu:
+     Tasks      name, priority, state (Run / Ready / Wait), task or
+                process, and for CLI processes the CLI number and the
+                command that is running
+     Libraries  name, version.revision and open count
+     Devices    name, version.revision and open count
+     Resources  name, plus version when the resource has one
+     Ports      public message ports and the task each one signals
+ * Click a row (or use the cursor keys) to select it. The status line
+   shows its address and, for a task, the signals it is waiting for.
+
+What it can do
+--------------
+
+ * Pri + / Pri -   change the selected task's priority, one step at a
+                   time, within -20..+20.
+ * Break           send the selected task a Ctrl-C (asks first). Most
+                   CLI commands stop when they get one.
+ * Project/Save report writes a full text report to RAM:SysMon.report.
+ * Options menu: refresh every 1, 2 or 5 seconds; sort by name or by
+   priority (remembered per view).
+
+SysMon never kills or removes tasks. That is not safe on the Amiga, and a
+system monitor should not be able to crash the system it is watching.
+Before every action it checks, with multitasking stopped, that the task
+it is about to touch is still there.
+
+Using it
+--------
+
+From Workbench, double-click the SysMon icon. The window can be dragged,
+sent to the back and made taller to show more rows. Right Amiga + Q quits.
+
+From the CLI:
+
+    sysmon            open the window
+    sysmon REPORT     print the text report to the CLI and exit
+    sysmon >RAM:sys.txt REPORT     the same, into a file
+
+The REPORT mode is handy in scripts, or for sending someone your system
+configuration when you ask for help.
+
+Keyboard shortcuts (Right Amiga + key): A About, S Save report, Q Quit,
+T L D R P switch view.
+
+Installing
+----------
+
+Copy the SysMon drawer anywhere you like, for example to SYS:Utilities.
+SysMon needs no libraries, fonts or assigns beyond the ROM.
+
+Technical notes
+---------------
+
+ * Written in C, cross-compiled with GCC 6.5 (bebbo's amiga-gcc) against
+   the Kickstart 1.3 includes, so it cannot call anything newer by
+   accident. 22K, 68000 code.
+ * System lists are copied out with Disable()/Forbid() held for as short
+   a time as possible. Nothing is drawn or allocated while they are held.
+ * Refreshes come from timer.device, so SysMon sleeps between updates and
+   costs almost no CPU time.
+ * The interface is built by hand from plain Intuition gadgets, with no
+   GadTools, so it looks at home on 1.3 and uses the Workbench's own
+   colours on 2.0 and later.
+ * Tested on Kickstart 1.3 (A500, OCS, 512K + 512K) and Kickstart 3.1
+   (ECS, 1MB + 1MB) under WinUAE, including a run-and-quit memory check:
+   no memory is lost.
+
+History
+-------
+
+ 1.0 (4.11.2026)  First release.
+
+Copyright and distribution
+--------------------------
+
+SysMon is (c) 2026 Desert Palms Software, written by Paul Seibert.
+
+SysMon is freeware. You may use it for free and copy it freely, as long
+as the archive is passed on complete and unchanged and no money is
+charged for it beyond the cost of the media. It may be put on Aminet,
+cover disks and CD-ROM collections.
+
+SysMon is provided "as is", without warranty of any kind. Use it at your
+own risk.
+
+Source code: https://github.com/PaulSeibert/amiga-sysmon
+
+Desert Palms Software makes new software for classic Amiga computers.
