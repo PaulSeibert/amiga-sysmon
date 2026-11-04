@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/media/desert-palms-shield.png" width="288" alt="Desert Palms Software shield logo">
+  <img src="docs/media/dps_logo_amiga.png" alt="Desert Palms Software" width="288">
 </p>
 
 <h1 align="center">SysMon</h1>
@@ -261,6 +261,6 @@ Built with [bebbo's amiga-gcc](https://github.com/bebbo/amiga-gcc) and libnix,
 Amiga is a trademark of its respective owner.
 
 <p align="center">
-  <img src="docs/media/desert-palms-shield.png" width="96" alt=""><br>
+  <img src="docs/media/dps_logo_amiga.png" alt="Desert Palms Software" width="144"><br>
   <b>Desert Palms Software</b>: new software for classic Amiga computers.
 </p>
