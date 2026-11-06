@@ -241,6 +241,7 @@ No Kickstart ROMs or Workbench disks are included. To test, use your own, for ex
 src/            C sources
 art/            icon and logo artwork as ASCII (one character per pixel)
 tools/          mkicon.py, mkimage.py (art -> .info / C), dumpinfo.sh (inspect reference icons)
+docs/DEVELOPMENT.md  design rules, Kickstart 1.3 lessons, how the tests work
 docs/media/     screenshots, animation and preview video
 SysMon.readme   Aminet readme (shipped in the archive)
 build.sh        build the program, icon and test disk
